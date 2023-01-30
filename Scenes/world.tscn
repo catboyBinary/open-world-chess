@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://cu47be160xsdi"]
+
+[ext_resource type="Script" path="res://Scripts/node_3d.gd" id="1_tbkvv"]
+[ext_resource type="Script" path="res://Scenes/Camera3D.gd" id="2_f8sqr"]
+[ext_resource type="Script" path="res://Scripts/GridMap.gd" id="2_pgo74"]
+[ext_resource type="Script" path="res://Classes/Pieces/Pawn.gd" id="3_wn28a"]
+
+[sub_resource type="Environment" id="Environment_w5i12"]
+background_mode = 1
+background_color = Color(0.345098, 0.235294, 0.356863, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.521569, 0.521569, 0.521569, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fd4yn"]
+albedo_color = Color(0.792157, 0.647059, 0.584314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gji1h"]
+material = SubResource("StandardMaterial3D_fd4yn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7kx7"]
+albedo_color = Color(0.596078, 0.447059, 0.380392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qskk5"]
+material = SubResource("StandardMaterial3D_p7kx7")
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_2514y"]
+item/0/name = "cell"
+item/0/mesh = SubResource("BoxMesh_gji1h")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "cell2"
+item/1/mesh = SubResource("BoxMesh_qskk5")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/shapes = []
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_tbkvv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.427516, 0.563232, 0, 0.79653, 0.604599, -0.707107, -0.427516, 0.563232, 31.4681, 35.1479, 29.698)
+environment = SubResource("Environment_w5i12")
+projection = 1
+current = true
+fov = 53.0
+size = 10.0
+script = ExtResource("2_f8sqr")
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 61.0
+offset_bottom = 26.0
+scale = Vector2(4.48, 3.36)
+text = "FPS:"
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = SubResource("MeshLibrary_2514y")
+cell_size = Vector3(1, 0.2, 1)
+script = ExtResource("2_pgo74")
+frequency = 0.05
+amplitude = 15
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.830012, -0.557745, 6.89412e-08, 0.175396, 0.261016, 0.949266, -0.529449, -0.787903, 0.314473, 3.38379, 6.89344, 3.54366)
+light_indirect_energy = 0.677
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_wn28a")
