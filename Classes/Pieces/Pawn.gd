@@ -1,8 +1,8 @@
 class_name Pawn extends ChessPiece
 
-func _init():
+func create():
 	value = 1
-	max_height = 0.2
+	max_height = 1
 
 func get_legal_moves():
 	pass
