@@ -46,7 +46,7 @@ environment = SubResource("Environment_w5i12")
 projection = 1
 current = true
 fov = 53.0
-size = 10.0
+size = 20.0
 script = ExtResource("2_f8sqr")
 
 [node name="Control" type="Control" parent="Camera3D"]

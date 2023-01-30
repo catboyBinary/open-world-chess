@@ -13,5 +13,5 @@ func _process(delta):
 	if Input.is_action_pressed("ui_up"): position.z-=delta*10
 	if Input.is_action_pressed("ui_down"): position.z+=delta*10
 
-	if Input.is_action_just_pressed("left"): rotate_y(deg_to_rad(-1))
-	if Input.is_action_just_pressed("right"): rotate_y(deg_to_rad(90))
+	if Input.is_action_pressed("left"): rotate_y(deg_to_rad(delta*10))
+	if Input.is_action_pressed("right"): rotate_y(deg_to_rad(-delta*10))
