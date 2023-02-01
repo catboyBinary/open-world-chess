@@ -10,8 +10,6 @@ func _ready():
 	noise.noise_type = 0
 	noise.fractal_type = 0
 	var pawn = Pawn.new(self, Vector3i(0,3,0))
-	print(pawn.board.name)
-	print(pawn.position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
